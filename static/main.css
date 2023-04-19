@@ -106,6 +106,17 @@
   color: #fff;
 }
 
+#user-reviews h2 {
+  color: #ff5722;
+}
+
+#movie-unavailable {
+  color: white;
+}
+#movie-unavailable h1 {
+  color: white;
+}
+
 .movie {
   color: #ff5722;
   margin-left: auto;
@@ -133,40 +144,6 @@
 .movie-content .card-body .card-title span {
   color: #756969;
   font-size: 20px;
-}
-
-#reviews-area h2 {
-  color: #ff5722;
-}
-#reviews-area #reviews-table-area {
-  margin: 0 auto;
-  margin-top: 25px;
-}
-#reviews-area #reviews-table-area #reviews-table {
-  color: #fff;
-}
-#reviews-area #reviews-table-area #reviews-table thead {
-  color: #fff;
-}
-#reviews-area #reviews-table-area #reviews-table thead tr th {
-  background-color: #ff5722;
-}
-#reviews-area #reviews-table-area #reviews-table thead tr #reviews {
-  width: 75%;
-}
-#reviews-area #reviews-table-area #reviews-table tbody tr {
-  background-color: #ff5722;
-}
-#reviews-area #reviews-table-area #reviews-table tbody tr td {
-  border-color: white;
-  border-style: solid;
-  border-width: 1px;
-}
-#reviews-area #reviews-table-area #movie-unavailable {
-  color: #fff;
-}
-#reviews-area #reviews-table-area #movie-unavailable h1 {
-  color: #fff;
 }
 
 #click-me-btn {

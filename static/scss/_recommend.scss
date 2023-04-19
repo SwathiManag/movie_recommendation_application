@@ -50,6 +50,20 @@
 	}
 }
 
+#user-reviews {
+	h2 {
+		color: $orange;
+	}
+}
+
+#movie-unavailable {
+	color: white;
+
+	h1 {
+		color: white;
+	}
+}
+
 .movie {
 	color: $orange;
 	margin-left: auto;
@@ -84,55 +98,6 @@
 			span {
 				color: #756969;
 				font-size: 20px;
-			}
-		}
-	}
-}
-
-#reviews-area {
-	h2 {
-		color: $orange;
-	}
-
-	#reviews-table-area {
-		margin: 0 auto;
-		margin-top: 25px;
-
-		#reviews-table {
-			color: #fff;
-
-			thead {
-				color: #fff;
-
-				tr {
-					th {
-						background-color: $orange;
-					}
-
-					#reviews {
-						width: 75%
-					}
-				}
-			}
-
-			tbody {
-				tr {
-					background-color: $orange;
-
-					td {
-						border-color: white;
-						border-style: solid;
-						border-width: 1px;
-					}
-				}
-			}
-		}
-
-		#movie-unavailable {
-			color: #fff;
-
-			h1 {
-				color: #fff;
 			}
 		}
 	}

@@ -73,42 +73,32 @@
   </div>
   {% endif %}
 
-  <center id="reviews-area">
+  <center id="user-reviews">
     {% if reviews %}
-    <h2>USER REVIEWS</h2>
-    <div id="reviews-table-area" class="col-md-12">
-      <table id="reviews-table" class="table table-bordered" bordercolor="white">
-        <thead>
-          <tr>
-            <th id="reviews" class="text-center" scope="col">Comments</th>
-            <th id="sentiments" class="text-center" scope="col">Sentiments</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {% for review, status in reviews.items() if not reviews.hidden %}
-          <tr>
-            <td>{{review}}</td>
-            <td>
-              <center>
-                {{status}} :
-                {% if status =='Good' %}
-                &#128515;
-                {% else %}
-                &#128534;
-                {% endif %}
-              </center>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    {% else %}
-    <div id="movie-unavailable">
-      <h1> This movie is not released yet. Stay tuned! </h1>
-    </div>
-    {% endif %}
+    <h2>USER REVIEWS</h3>
+      <br />
+      {% for review, status in reviews.items() if not reviews.hidden %}
+      {% if status =='Good' %}
+      <div class="card border-success mb-3" style="max-width: 95%;">
+        <div class="card-header">{{status}}&#128515;</div>
+        <div class="card-body text-success">
+          <p class="card-text">{{review}}</p>
+        </div>
+      </div>
+      {% else %}
+      <div class="card border-danger mb-3" style="max-width: 95%;">
+        <div class="card-header">{{status}}&#128534;</div>
+        <div class="card-body text-danger">
+          <p class="card-text">{{review}}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+      <div id="movie-unavailable">
+        <h1> This movie is not released yet. Stay tuned! </h1>
+      </div>
+      {% endif %}
   </center>
 
   {% if movie_cards|length > 1 %}
