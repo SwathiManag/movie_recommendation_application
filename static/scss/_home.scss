@@ -1,58 +1,62 @@
 #header-area {
     display: block;
 
-    >h1 {
-        font-family: 'Helvetica', sans-serif;
-        color: #ff5722;
-        text-align: center;
-        margin-top: 50px;
+    center {
+        h1 {
+            font-family: 'Helvetica', sans-serif;
+            color: $orange;
+            text-align: center;
+            margin-top: 50px;
+        }
     }
 
-    >hr {
+    hr {
         border: 0;
-        border-top: 1px solid #ff5722;
+        border-top: 1px solid $orange;
         margin-top: 30px;
         margin-bottom: 30px;
     }
 
-    >p {
+    p {
         font-family: 'Arial', sans-serif;
         font-size: 16px;
         color: $gray;
         text-align: center;
     }
-}
 
-#home-img {
-    width: 300px;
-    height: auto;
-    margin-top: 30px;
-    border-radius: 10px;
-}
+    center {
+        #home-img {
+            width: 300px;
+            height: auto;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+    }
 
-#search-input {
-    margin-top: 30px;
-    text-align: center;
-    color: white;
-}
+    #search-input {
+        margin-top: 30px;
+        text-align: center;
+        color: white;
 
-#autoComplete {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    width: 60%;
-    color: #181818
-}
+        #autoComplete {
+            background-color: #ffffff;
+            border-color: #ffffff;
+            width: 60%;
+            color: $bgcolor;
+        }
+    }
 
-#search-btn-area {
-    text-align: center;
-}
+    #search-btn-area {
+        text-align: center;
 
-#search-btn {
-    background-color: $green;
-    border-color: $green;
-    width: 150px;
-    transition: all 0.3s ease-in-out;
-    color: #fff;
+        #search-btn {
+            background-color: $green;
+            border-color: $green;
+            width: 150px;
+            transition: all 0.3s ease-in-out;
+            color: #fff;
+        }
+    }
 }
 
 .fail {
@@ -62,7 +66,7 @@
 
 
 .fail {
-    background-color: #f44336;
+    background-color: $bgcolor;
     /* change to your desired color */
     color: rgb(223, 22, 22);
     text-align: center;

@@ -3,50 +3,45 @@
 #header-area {
   display: block;
 }
-#header-area > h1 {
+#header-area center h1 {
   font-family: "Helvetica", sans-serif;
   color: #ff5722;
   text-align: center;
   margin-top: 50px;
 }
-#header-area > hr {
+#header-area hr {
   border: 0;
   border-top: 1px solid #ff5722;
   margin-top: 30px;
   margin-bottom: 30px;
 }
-#header-area > p {
+#header-area p {
   font-family: "Arial", sans-serif;
   font-size: 16px;
   color: #777;
   text-align: center;
 }
-
-#home-img {
+#header-area center #home-img {
   width: 300px;
   height: auto;
   margin-top: 30px;
   border-radius: 10px;
 }
-
-#search-input {
+#header-area #search-input {
   margin-top: 30px;
   text-align: center;
   color: white;
 }
-
-#autoComplete {
+#header-area #search-input #autoComplete {
   background-color: #ffffff;
   border-color: #ffffff;
   width: 60%;
   color: #181818;
 }
-
-#search-btn-area {
+#header-area #search-btn-area {
   text-align: center;
 }
-
-#search-btn {
+#header-area #search-btn-area #search-btn {
   background-color: #2ecc71;
   border-color: #2ecc71;
   width: 150px;
@@ -60,7 +55,7 @@
 }
 
 .fail {
-  background-color: #f44336;
+  background-color: #181818;
   /* change to your desired color */
   color: rgb(223, 22, 22);
   text-align: center;
