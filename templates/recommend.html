@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NEW</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css') }}">
+
+</head>
+
+<body id="content">
+  <div class="results">
+    <center>
+      <h2 id="name" class="text-uppercase">{{title}}</h2>
+    </center>
+  </div>
+  <br>
+
+  <div id="searched-movie-content">
+    <div id="mcontent">
+      <div class="poster-lg">
+        <img class="poster" height="400" width="250" src={{poster}}>
+      </div>
+      <div class="poster-sm text-center">
+        <img class="poster" height="400" width="250" src={{poster}}>
+      </div>
+      <div id="details">
+        <br />
+        <h6 id="title">TITLE: &nbsp;{{title}}</h6>
+        <h6 id="overview">OVERVIEW:
+          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{overview}}
+        </h6>
+        <h6 id="vote_average">RATING: &nbsp;{{vote_average}}/10 ({{vote_count}} votes)</h6>
+        <h6 id="genres">GENRE: &nbsp;{{genres}}</h6>
+        <h6 id="date">RELEASE DATE: &nbsp;{{release_date}}</h6>
+        <h6 id="runtime">RUNTIME: &nbsp;{{runtime}}</h6>
+        <h6 id="status">STATUS: &nbsp;{{status}}</h6>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  {% if casts|length > 1 %}
+  <div class="movie">
+    <center>
+      <h3>TOP CAST</h3>
+    </center>
+  </div>
+
+  <div class="movie-content">
+    {% for name, details in casts.items() if not casts.hidden %}
+    <div class="castcard card" title="{{name}}" data-target="#{{details[0]}}">
+      <div class="imghvr">
+        <img class="card-img-top cast-img" id="{{details[0]}}" height="360" width="240" alt="{{name}} - profile"
+          src="{{details[2]}}">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{name|title}}</h5>
+        <h5 class="card-title"><span>Character: {{details[1]|title}}</span></h5>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <center id="reviews-area">
+    {% if reviews %}
+    <h2>USER REVIEWS</h2>
+    <div id="reviews-table-area" class="col-md-12">
+      <table id="reviews-table" class="table table-bordered" bordercolor="white">
+        <thead>
+          <tr>
+            <th id="reviews" class="text-center" scope="col">Comments</th>
+            <th id="sentiments" class="text-center" scope="col">Sentiments</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for review, status in reviews.items() if not reviews.hidden %}
+          <tr>
+            <td>{{review}}</td>
+            <td>
+              <center>
+                {{status}} :
+                {% if status =='Good' %}
+                &#128515;
+                {% else %}
+                &#128534;
+                {% endif %}
+              </center>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div id="movie-unavailable">
+      <h1> This movie is not released yet. Stay tuned! </h1>
+    </div>
+    {% endif %}
+  </center>
+
+  {% if movie_cards|length > 1 %}
+  <div class="movie">
+    <center>
+      <h3>RECOMMENDED MOVIES FOR YOU</h3>
+      <h5>(Click any of the movies to get recommendation)</h5>
+    </center>
+  </div>
+
+  <div class="movie-content">
+    {% for poster, title in movie_cards.items() if not movie_cards.hidden %}
+    <div class="card" style="width: 15rem;" title="{{title}}" onclick="recommendcard(this)">
+      <div class="imghvr">
+        <img class="card-img-top" height="360" width="240" alt="{{title}} - poster" src={{poster}}>
+        <figcaption class="fig">
+          <button id="click-me-btn" class="card-btn btn btn-danger"> Click Me </button>
+        </figcaption>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{title|capitalize}}</h5>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% endif %}
+
+
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='recommend.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

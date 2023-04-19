@@ -1,0 +1,336 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+#header-area {
+  display: block;
+}
+#header-area > h1 {
+  font-family: "Helvetica", sans-serif;
+  color: #ff5722;
+  text-align: center;
+  margin-top: 50px;
+}
+#header-area > hr {
+  border: 0;
+  border-top: 1px solid #ff5722;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#header-area > p {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+}
+
+#home-img {
+  width: 300px;
+  height: auto;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+#search-input {
+  margin-top: 30px;
+  text-align: center;
+  color: white;
+}
+
+#autoComplete {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  width: 60%;
+  color: #181818;
+}
+
+#search-btn-area {
+  text-align: center;
+}
+
+#search-btn {
+  background-color: #2ecc71;
+  border-color: #2ecc71;
+  width: 150px;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+}
+
+.fail {
+  display: none;
+  color: white;
+}
+
+.fail {
+  background-color: #f44336;
+  /* change to your desired color */
+  color: rgb(223, 22, 22);
+  text-align: center;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  margin: 10px;
+}
+
+.fail h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+#searched-movie-content #mcontent .poster-lg .poster {
+  border-radius: 40px;
+  margin-left: 90px;
+}
+#searched-movie-content #mcontent .poster-sm .poster {
+  border-radius: 40px;
+  margin-bottom: 5%;
+}
+#searched-movie-content #mcontent #details {
+  margin-left: 50px;
+}
+#searched-movie-content #mcontent #details #title {
+  color: #fff;
+}
+#searched-movie-content #mcontent #details #overview {
+  color: #fff;
+  max-width: 85%;
+}
+#searched-movie-content #mcontent #details #vote_average {
+  color: #fff;
+}
+#searched-movie-content #mcontent #details #genres {
+  color: #fff;
+}
+#searched-movie-content #mcontent #details #date {
+  color: #fff;
+}
+#searched-movie-content #mcontent #details #runtime {
+  color: #fff;
+}
+#searched-movie-content #mcontent #details #status {
+  color: #fff;
+}
+
+.movie {
+  color: #ff5722;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+}
+
+.movie-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.movie-content div {
+  margin: 20px;
+}
+.movie-content .castcard {
+  width: 15rem;
+}
+.movie-content .imghvr .cast-img {
+  filter: brightness(100%);
+}
+.movie-content .card-body .card-title span {
+  color: #756969;
+  font-size: 20px;
+}
+
+#reviews-area h2 {
+  color: #ff5722;
+}
+#reviews-area #reviews-table-area {
+  margin: 0 auto;
+  margin-top: 25px;
+}
+#reviews-area #reviews-table-area #reviews-table {
+  color: #fff;
+}
+#reviews-area #reviews-table-area #reviews-table thead {
+  color: #fff;
+}
+#reviews-area #reviews-table-area #reviews-table thead tr th {
+  background-color: #ff5722;
+}
+#reviews-area #reviews-table-area #reviews-table thead tr #reviews {
+  width: 75%;
+}
+#reviews-area #reviews-table-area #reviews-table tbody tr {
+  background-color: #ff5722;
+}
+#reviews-area #reviews-table-area #reviews-table tbody tr td {
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+}
+#reviews-area #reviews-table-area #movie-unavailable {
+  color: #fff;
+}
+#reviews-area #reviews-table-area #movie-unavailable h1 {
+  color: #fff;
+}
+
+#click-me-btn {
+  background-color: #ff5722;
+}
+
+.btn-block {
+  width: 15%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: #e0e4e1;
+}
+
+#content {
+  background-color: #181818;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+#autoComplete {
+  background-position: 98%;
+}
+
+#name {
+  color: white;
+  padding: 1px;
+}
+
+h6 {
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 650px) {
+  #mcontent {
+    display: block;
+  }
+  .poster-lg {
+    display: none;
+  }
+  #details {
+    margin-left: 30px;
+  }
+  #loader {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../static/images/loader.gif");
+    background-size: 40%;
+    background-position: 50% 50%;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    transition: background-image 0.2s ease-in-out;
+  }
+  #loader-text {
+    vertical-align: middle;
+    color: white;
+  }
+  #autoComplete {
+    background-position: 97%;
+  }
+  svg[data-toggle=tooltip] {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .modal-body {
+    display: block;
+  }
+  .profile-pic {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .modal-body {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 651px) {
+  .poster-sm {
+    display: none;
+  }
+  #mcontent {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  #loader {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../static/images/loader.gif");
+    background-size: 20%;
+    background-position: 50% 50%;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    transition: background-image 0.2s ease-in-out;
+  }
+  #loader-text {
+    vertical-align: middle;
+    color: white;
+  }
+}
+.poster {
+  box-shadow: 0px 1px 15px 4px rgb(250, 250, 250);
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.fig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: brightness(50%);
+          backdrop-filter: brightness(50%);
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  opacity: 0;
+  transition: all 0.75s ease;
+}
+
+.fig:hover {
+  opacity: 1;
+  -webkit-backdrop-filter: br;
+          backdrop-filter: br;
+  transition: all 0.75s ease;
+}
+
+.card-btn {
+  border-radius: 20px;
+}
+
+.imghvr {
+  position: relative;
+}/*# sourceMappingURL=main.css.map */
