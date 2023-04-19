@@ -68,6 +68,9 @@
 
 	.castcard {
 		width: 15rem;
+		card {
+			cursor: unset;
+		}
 	}
 
 	.imghvr {
@@ -180,7 +183,7 @@
 }
 
 #name {
-	color: white;
+	color: $orange;
 	padding: 1px;
 }
 

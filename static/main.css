@@ -124,6 +124,9 @@
 .movie-content .castcard {
   width: 15rem;
 }
+.movie-content .castcard card {
+  cursor: unset;
+}
 .movie-content .imghvr .cast-img {
   filter: brightness(100%);
 }
@@ -203,7 +206,7 @@
 }
 
 #name {
-  color: white;
+  color: #ff5722;
   padding: 1px;
 }
 
