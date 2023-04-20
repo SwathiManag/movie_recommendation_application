@@ -343,7 +343,7 @@
    "outputs": [],
    "source": [
     "\n",
-    "filename = 'nlp_model.pkl'\n",
+    "filename = 'naive_bayes.pkl'\n",
     "pickle.dump(clf, open(filename, 'wb'))"
    ]
   },
