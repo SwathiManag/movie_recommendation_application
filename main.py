@@ -1,73 +1,27 @@
 import numpy as np
 import pandas as pd
-from flask import Flask, render_template, request
+from recommender import recommender
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import matplotlib.pyplot as plt
 import json
 import bs4 as bs
 import urllib.request
 import pickle
 import requests
+from flask import Flask, render_template, request
+import matplotlib.pyplot as plt
 
-# load the nlp model and tfidf vectorizer from disk
-filename = 'nlp_model.pkl'
-clf = pickle.load(open(filename, 'rb'))
+data=pd.read_csv('main_data.csv')
+model_pickel = 'naive_bayes.pkl'
+model = pickle.load(open(model_pickel, 'rb'))
 vectorizer = pickle.load(open('tranform.pkl','rb'))
-
-def create_similarity():
-    data = pd.read_csv('main_data.csv')
-    # creating a count matrix
-    cv = CountVectorizer()
-    count_matrix = cv.fit_transform(data['comb'])
-    # creating a similarity score matrix
-    similarity = cosine_similarity(count_matrix)
-    return data,similarity
-
-def rcmd(m):
-    m = m.lower()
-    try:
-        data.head()
-        similarity.shape
-    except:
-        data, similarity = create_similarity()
-    if m not in data['movie_title'].unique():
-        return('Sorry! The movie you requested is not in our database. Please check the spelling or try with some other movies')
-    else:
-        i = data.loc[data['movie_title']==m].index[0]
-        lst = list(enumerate(similarity[i]))
-        lst = sorted(lst, key = lambda x:x[1] ,reverse=True)
-        lst = lst[1:11] # excluding first item since it is the requested movie itself
-        l = []
-        for i in range(len(lst)):
-            a = lst[i][0]
-            l.append(data['movie_title'][a])
-        
-        # plot showing top ten movies based on cosine similarity score
-        # scores = []
-        # for i in range(len(lst)):
-        #     scores.append(lst[i][1])
-
-        # fig = plt.figure(figsize = (20, 5))
- 
-        # # creating the bar plot
-        # plt.bar(l, scores, color ='maroon',
-        #         width = 0.4)
-        
-        # plt.xlabel("Movie Title")
-        # plt.ylabel("Similarity Score")
-        # plt.title("Top ten recommended movies for the movie: {}".format(m.title()))
-        # plt.show()
-
-        return l
-    
     
 # converting list of string to list (eg. "["abc","def"]" to ["abc","def"])
-def convert_to_list(my_list):
-    my_list = my_list.split('","')
-    my_list[0] = my_list[0].replace('["','')
-    my_list[-1] = my_list[-1].replace('"]','')
-    return my_list
+def string_to_list(str):
+    li = str.split('","')
+    li[0] = li[0].replace('["','')
+    li[-1] = li[-1].replace('"]','')
+    return li
 
 def get_suggestions():
     data = pd.read_csv('main_data.csv')
@@ -84,7 +38,7 @@ def home():
 @app.route("/similarity",methods=["POST"])
 def similarity():
     movie = request.form['name']
-    rc = rcmd(movie)
+    rc,score= recommender(movie)
     if type(rc)==type('string'):
         return rc
     else:
@@ -118,14 +72,14 @@ def recommend():
     suggestions = get_suggestions()
 
     # call the convert_to_list function for every string that needs to be converted to list
-    rec_movies = convert_to_list(rec_movies)
-    rec_posters = convert_to_list(rec_posters)
-    cast_names = convert_to_list(cast_names)
-    cast_chars = convert_to_list(cast_chars)
-    cast_profiles = convert_to_list(cast_profiles)
-    cast_bdays = convert_to_list(cast_bdays)
-    cast_bios = convert_to_list(cast_bios)
-    cast_places = convert_to_list(cast_places)
+    rec_movies = string_to_list(rec_movies)
+    rec_posters = string_to_list(rec_posters)
+    cast_names = string_to_list(cast_names)
+    cast_chars = string_to_list(cast_chars)
+    cast_profiles = string_to_list(cast_profiles)
+    cast_bdays = string_to_list(cast_bdays)
+    cast_bios = string_to_list(cast_bios)
+    cast_places = string_to_list(cast_places)
     
     # convert string to list (eg. "[1,2,3]" to [1,2,3])
     cast_ids = cast_ids.split(',')
@@ -156,7 +110,7 @@ def recommend():
             # passing the review to our model
             movie_review_list = np.array([reviews.string])
             movie_vector = vectorizer.transform(movie_review_list)
-            pred = clf.predict(movie_vector)
+            pred = model.predict(movie_vector)
             reviews_status.append('Good' if pred else 'Bad')
 
     # combining reviews and comments into a dictionary
