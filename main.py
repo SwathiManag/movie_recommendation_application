@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
-from recommender import recommender
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from recommender import recommender,string_to_list
 import json
 import bs4 as bs
 import urllib.request
@@ -16,15 +14,10 @@ model_pickel = 'naive_bayes.pkl'
 model = pickle.load(open(model_pickel, 'rb'))
 vectorizer = pickle.load(open('tranform.pkl','rb'))
     
-# converting list of string to list (eg. "["abc","def"]" to ["abc","def"])
-def string_to_list(str):
-    li = str.split('","')
-    li[0] = li[0].replace('["','')
-    li[-1] = li[-1].replace('"]','')
-    return li
+
 
 def get_suggestions():
-    data = pd.read_csv('main_data.csv')
+    data = pd.read_csv('main_data.csv') 
     return list(data['movie_title'].str.capitalize())
 
 app = Flask(__name__)
