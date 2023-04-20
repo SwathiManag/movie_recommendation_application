@@ -71,14 +71,14 @@
         <h6 id="date">RELEASE DATE: &nbsp;{{release_date}}</h6>
         <h6 id="runtime">RUNTIME: &nbsp;{{runtime}}</h6>
         <h6 id="status">STATUS: &nbsp;{{status}}</h6>
-        <h6 id="cast">CAST AND CHARACTER NAMES:
-          {% if casts|length > 1 %}
+        {% if casts|length > 1 %}
+        <h6 id="cast-char-names">CAST AND CHARACTER NAMES:
           {% for name, details in casts.items() if not casts.hidden %}
           <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span>{{name|title}} as {{details[1]|title}}</span>
           {% endfor %}
-          {% endif %}
         </h6>
+        {% endif %}
       </div>
     </div>
   </div>
