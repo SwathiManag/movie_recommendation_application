@@ -1,42 +1,32 @@
 import numpy as np
 import pandas as pd
 from recommender import recommender,string_to_list
-import json
 import bs4 as bs
 import urllib.request
 import pickle
-import requests
 from flask import Flask, render_template, request
-import matplotlib.pyplot as plt
 
 data=pd.read_csv('main_data.csv')
 model_pickel = 'naive_bayes.pkl'
 model = pickle.load(open(model_pickel, 'rb'))
 vectorizer = pickle.load(open('tranform.pkl','rb'))
-    
-
-
-def get_suggestions():
-    data = pd.read_csv('main_data.csv') 
-    return list(data['movie_title'].str.capitalize())
 
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/home")
 def home():
-    suggestions = get_suggestions()
-    return render_template('home.html',suggestions=suggestions)
+    return render_template('home.html',suggestions=list(data['movie_title'].str.capitalize()))
 
 @app.route("/similarity",methods=["POST"])
 def similarity():
     movie = request.form['name']
-    rc,score= recommender(movie)
-    if type(rc)==type('string'):
-        return rc
+    similar_movies,score= recommender(movie)
+    if type(similar_movies)==type('string'):
+        return similar_movies
     else:
-        m_str="---".join(rc)
-        return m_str
+        movies="---".join(similar_movies)
+        return movies
 
 @app.route("/recommend",methods=["POST"])
 def recommend():
@@ -62,7 +52,7 @@ def recommend():
     rec_posters = request.form['rec_posters']
 
     # get movie suggestions for auto complete
-    suggestions = get_suggestions()
+    suggestions = list(data['movie_title'].str.capitalize())
 
     # call the convert_to_list function for every string that needs to be converted to list
     rec_movies = string_to_list(rec_movies)
