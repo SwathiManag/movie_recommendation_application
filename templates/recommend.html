@@ -19,6 +19,32 @@
 </head>
 
 <body id="content">
+
+  {% if movie_cards|length > 1 %}
+  <div class="movie">
+    <center>
+      <h3>RECOMMENDED MOVIES FOR YOU</h3>
+      <h5>Click on any of the movies to get recommendation</h5>
+    </center>
+  </div>
+
+  <div class="movie-content">
+    {% for poster, title in movie_cards.items() if not movie_cards.hidden %}
+    <div class="card" style="width: 15rem;" title="{{title}}" onclick="recommendcard(this)">
+      <div class="imghvr">
+        <img class="card-img-top" height="300" width="240" alt="{{title}} - poster" src={{poster}}>
+        <figcaption class="fig">
+          <button id="click-me-btn" class="card-btn btn btn-danger"> Click Me </button>
+        </figcaption>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{title|capitalize}}</h5>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
   <div class="results">
     <center>
       <h2 id="name" class="text-uppercase">{{title}}</h2>
@@ -45,33 +71,18 @@
         <h6 id="date">RELEASE DATE: &nbsp;{{release_date}}</h6>
         <h6 id="runtime">RUNTIME: &nbsp;{{runtime}}</h6>
         <h6 id="status">STATUS: &nbsp;{{status}}</h6>
+        <h6 id="cast">CAST AND CHARACTER NAMES:
+          {% if casts|length > 1 %}
+          {% for name, details in casts.items() if not casts.hidden %}
+          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span>{{name|title}} as {{details[1]|title}}</span>
+          {% endfor %}
+          {% endif %}
+        </h6>
       </div>
     </div>
   </div>
   <br />
-
-  {% if casts|length > 1 %}
-  <div class="movie">
-    <center>
-      <h3>TOP CAST</h3>
-    </center>
-  </div>
-
-  <div class="movie-content">
-    {% for name, details in casts.items() if not casts.hidden %}
-    <div class="castcard card" title="{{name}}" data-target="#{{details[0]}}">
-      <div class="imghvr">
-        <img class="card-img-top cast-img" id="{{details[0]}}" height="300" width="240" alt="{{name}} - profile"
-          src="{{details[2]}}">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{name|title}}</h5>
-        <h5 class="card-title"><span>Character: {{details[1]|title}}</span></h5>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
 
   <center id="user-reviews">
     {% if reviews %}
@@ -100,36 +111,9 @@
       </div>
       {% endif %}
   </center>
-
-  {% if movie_cards|length > 1 %}
-  <div class="movie">
-    <center>
-      <h3>RECOMMENDED MOVIES FOR YOU</h3>
-      <h5>(Click any of the movies to get recommendation)</h5>
-    </center>
-  </div>
-
-  <div class="movie-content">
-    {% for poster, title in movie_cards.items() if not movie_cards.hidden %}
-    <div class="card" style="width: 15rem;" title="{{title}}" onclick="recommendcard(this)">
-      <div class="imghvr">
-        <img class="card-img-top" height="300" width="240" alt="{{title}} - poster" src={{poster}}>
-        <figcaption class="fig">
-          <button id="click-me-btn" class="card-btn btn btn-danger"> Click Me </button>
-        </figcaption>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{title|capitalize}}</h5>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-
-  {% endif %}
-
-
-  </div>
-  </div>
+  <br />
+  <br />
+  <br />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="{{url_for('static', filename='recommend.js')}}"></script>

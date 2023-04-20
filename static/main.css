@@ -105,6 +105,10 @@
 #searched-movie-content #mcontent #details #status {
   color: #fff;
 }
+#searched-movie-content #mcontent #details #cast {
+  color: #fff;
+  max-width: 85%;
+}
 
 #user-reviews h2 {
   color: #ff5722;
@@ -134,9 +138,6 @@
 }
 .movie-content .castcard {
   width: 15rem;
-}
-.movie-content .castcard card {
-  cursor: unset;
 }
 .movie-content .imghvr .cast-img {
   filter: brightness(100%);

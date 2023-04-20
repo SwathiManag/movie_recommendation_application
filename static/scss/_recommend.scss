@@ -46,6 +46,11 @@
 			#status {
 				color: #fff;
 			}
+
+			#cast {
+				color: #fff;
+				max-width: 85%
+			}
 		}
 	}
 }
@@ -82,9 +87,6 @@
 
 	.castcard {
 		width: 15rem;
-		card {
-			cursor: unset;
-		}
 	}
 
 	.imghvr {
