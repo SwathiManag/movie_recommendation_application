@@ -26,3 +26,9 @@ def recommender(movie):
         scores.append(movie_list[i][1])
     
     return similar_movies,scores
+
+def string_to_list(str):
+    li = str.split('","')
+    li[0] = li[0].replace('["','')
+    li[-1] = li[-1].replace('"]','')
+    return li
